@@ -1,0 +1,192 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<head>
+<style>
+@import "css/style.css";
+</style>
+<script>
+	function dechex(v) {
+      		hex = tohex(v);
+     		return hex;
+   	}
+   	function tohex(i) {
+      		a2 = ''
+      		ihex = hexQuot(i);
+      		idiff = eval(i + '-(' + ihex + '*16)')
+      		a2 = itohex(idiff) + a2;
+      		while( ihex >= 16) {
+         		itmp = hexQuot(ihex);
+         		idiff = eval(ihex + '-(' + itmp + '*16)');
+         		a2 = itohex(idiff) + a2;
+         		ihex = itmp;
+      		} 
+      		a1 = itohex(ihex);
+      		return a1 + a2 ;
+   	}
+   
+	function hexQuot(i) {
+      		return Math.floor(eval(i +'/16'));
+   	}
+
+   function itohex(i) {
+     switch (i){
+	case 0:aa = '0';break;case 1:aa = '1';break;case 2:aa = '2';break;
+	case 3:aa = '3';break;case 4:aa = '4';break;case 5:aa = '5';break;
+	case 6:aa = '6';break;case 7:aa = '7';break;case 8:aa = '8';break;
+	case 9:aa = '9';break;case 10:aa = 'a';break;case 11:aa = 'b';break;
+	case 12:aa = 'c';break;case 13:aa = 'd';break;case 14:aa = 'e';break;
+	case 15:aa = 'f';break;
+	}
+	return aa;
+   }
+
+function createPopup(r,g,b){
+newwindow2 = window.open('','name','scrollbars=yes,height=600,width=800,toolbar=1,resizable=0');
+//newwindow2 = window.open("",
+    //                    "name",
+      //                  "toolbar=no,
+          //               width=400,height=300,
+              //           directories=no,
+                  //       status=no,
+                     //    scrollbars=yes,
+                       //  resize=no,
+                       //  menubar=no");
+
+newwindow2 .moveTo(50,50);
+var tmp = newwindow2.document;
+tmp.write('<html><head><title> r g b</title>');
+tmp.write('<style>@import "css/style.css";</style>');
+tmp.write('</head><body>');
+tmp.write('RGB COLORS WITH DECIMAL AND HEXADECIMAL VALUES');
+tmp.write('<table border = "2">');
+var hexR,hexG, hexB;
+var c = 0;
+for (i = 0; i < 16;i++){
+	tmp.write('<tr>');
+		for (j = 0; j < 16;j++){
+			hexR = dechex(r);
+			hexG = dechex(g);
+			hexB = dechex(b);
+			rgb = hexR+''+hexG+''+hexB;
+			tmp.write('<td>');
+			tmp.write('<span class = "textcolor">');
+			tmp.write(rgb);
+			tmp.write('</span>');
+			tmp.write('<br />');
+			tmp.write('<span style= "background: #'+rgb+'";>');
+			tmp.write('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;');
+			tmp.write('</span>');
+			tmp.write('</td>');
+			r--;g--;b--;
+			if (r < 0)r = 0;
+			if (g < 0)g = 0;
+			if (b < 0)b = 0;
+		}
+	tmp.write('</tr>');
+}
+tmp.write('</table>');
+tmp.write('</body></html>');
+tmp.close();
+
+}
+ 
+</script>
+
+</head>
+
+<body>
+<div id = "label0">
+RBG COLOR WHEEL <br />
+CLICK ON THE BUTTONS BELOW TO OPEN A WINDOW WITH <br />RGB COLORS AND THEIR RESPECTIVE HEXADECIMAL VALUES.
+</div>
+<div id = "red">
+<form  name = "f1">RED #ff0000<br />
+<span style= "background: #ff0000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<input type = "button" value = "RGB VALUES"  onClick = "createPopup(255,0,0);" />
+</form>
+</div>
+
+<div id = "green">
+<form  name = "f1">GREEN #00ff00<br />
+<span style= "background: #00ff00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<input type = "button" value = "RGB VALUES"  onClick = "createPopup(0,255,0);" />
+</form>
+</div>
+
+<div id = "blue">
+<form  name = "f1">BLUE #0000ff<br />
+<span style= "background: #0000ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<input type = "button" value = "RGB VALUES"  onClick = "createPopup(0,0,255);" />
+</form>
+</div>
+
+<div id = "yellow">
+<form  name = "f1">YELLOW #ffff00<br />
+<span style= "background: #ffff00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<input type = "button" value = "RGB VALUES"  onClick = "createPopup(255,255,0);" />
+</form>
+</div>
+
+<div id = "cyan">
+<form  name = "f1">CYAN #00ffff <br />
+<span style= "background: #00ffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<input type = "button" value = "RGB VALUES"  onClick = "createPopup(0,255,255);" />
+</form>
+</div>
+
+<div id = "magenta">
+<form  name = "f1">MAGENTA  #ff00ff<br />
+<span style= "background: #ff00ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<input type = "button" value = "RGB VALUES"  onClick = "createPopup(255,0,255);" />
+</form>
+</div>
+
+<div id = "rest1">
+<form  name = "f1">ORANGE #ff7f00
+<span style= "background: #ff7f00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<input type = "button" value = "RGB VALUES"  onClick = "createPopup(255,127,0);" />
+</form>
+
+<form  name = "f1">YELLOW-GREEN #7fff00
+<span style= "background: #7fff00">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<input type = "button" value = "RGB VALUES"  onClick = "createPopup(127,255,0);" />
+</form>
+
+<form  name = "f1">GREEN-CYAN #00ff7f
+<span style= "background: #00ff7f">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<input type = "button" value = "RGB VALUES"  onClick = "createPopup(0,255,127);" />
+</form>
+
+
+<form  name = "f1">CYAN-BLUE #007fff
+<span style= "background: #007fff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<input type = "button" value = "RGB VALUES"  onClick = "createPopup(0,127,255);" />
+</form>
+</div>
+<div id = "rest2">
+<form  name = "f1">BLUE-MAGENTA #7f00ff
+<span style= "background: #7f00ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<input type = "button" value = "RGB VALUES"  onClick = "createPopup(127,0,255);" />
+</form>
+
+<form  name = "f1">MAGENTA-RED #ff007f
+<span style= "background: #ff007f">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<input type = "button" value = "RGB VALUES"  onClick = "createPopup(255,0,127);" />
+</form>
+
+<form  name = "f1">BROWN #966400
+<span style= "background: #966400">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<input type = "button" value = "RGB VALUES"  onClick = "createPopup(150,100,0);" />
+</form>
+
+
+<form  name = "f1">CELESTE #7dc3ab
+<span style= "background: #7dc3ab">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<input type = "button" value = "RGB VALUES"  onClick = "createPopup(125,195,171);" />
+</form>
+</div>
+
+</body>
+</html>
+
